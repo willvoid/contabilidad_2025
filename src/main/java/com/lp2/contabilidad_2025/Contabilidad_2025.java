@@ -15,6 +15,8 @@ import com.lp2.contabilidad_2025.modelo.dao.CuentaContableCrudImpl;
 import com.lp2.contabilidad_2025.modelo.dao.DetalleAsientoCrudImpl;
 import com.lp2.contabilidad_2025.vista.GUICuentaContable;
 import com.lp2.contabilidad_2025.vista.GUILibroDiario;
+import com.lp2.contabilidad_2025.vista.VentanaPrincipal;
+import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.plaf.basic.BasicLookAndFeel;
 
@@ -28,16 +30,14 @@ public class Contabilidad_2025 {
             System.err.println("Failed to initialize LaF");
         }
         
-        GUILibroDiario gui = new GUILibroDiario(null, true);
-        AsientoCrudImpl crudAsiento = new AsientoCrudImpl();
-        DetalleAsientoCrudImpl crudDetalle = new DetalleAsientoCrudImpl();
-        LibroDiarioController ctrl = new LibroDiarioController(gui, crudAsiento, crudDetalle);
-        ctrl.mostrarVentana();
+        VentanaPrincipal guimain = new VentanaPrincipal();
+        guimain.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        guimain.setVisible(true);
         
-//        CuentaContableCrudImpl crud = new CuentaContableCrudImpl();
-//        GUICuentaContable gui = new GUICuentaContable(null, true);
-//        
-//        CuentaContableController ctrl = new CuentaContableController(gui, crud);
+//        GUILibroDiario gui = new GUILibroDiario(null, true);
+//        AsientoCrudImpl crudAsiento = new AsientoCrudImpl();
+//        DetalleAsientoCrudImpl crudDetalle = new DetalleAsientoCrudImpl();
+//        LibroDiarioController ctrl = new LibroDiarioController(gui, crudAsiento, crudDetalle);
 //        ctrl.mostrarVentana();
         
     }

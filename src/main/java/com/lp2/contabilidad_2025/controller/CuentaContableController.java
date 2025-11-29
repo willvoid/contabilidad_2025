@@ -60,7 +60,8 @@ public class CuentaContableController implements ActionListener , KeyListener {
         llenarComboTipo(gui.cbo_tipo);
         habilitarCampos(false);
         habilitarBoton(false);
-   
+        gui.btn_eliminar.setVisible(false);
+        gui.btn_eliminar.setEnabled(false);
         listar("");
     }
     
@@ -109,6 +110,7 @@ public class CuentaContableController implements ActionListener , KeyListener {
                 if (ok == 0) {
                     crud.eliminar(modelo.getCuentaContableByRow(fila));
                     listar("");
+                    limpiar();
                 }
             } else {
                 JOptionPane.showMessageDialog(gui, "Debe seleccionar una fila");
@@ -145,6 +147,8 @@ public class CuentaContableController implements ActionListener , KeyListener {
                 habilitarCampos(false);
             }
             
+            habilitarBoton(false);
+            habilitarCampos(false);
             listar("");
             limpiar();
             

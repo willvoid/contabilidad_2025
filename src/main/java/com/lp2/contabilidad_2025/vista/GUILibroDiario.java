@@ -57,6 +57,15 @@ public class GUILibroDiario extends javax.swing.JDialog {
         btn_eliminar_detalle = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        cbo_cuenta2 = new javax.swing.JComboBox<>();
+        txt_valorHaber = new javax.swing.JTextField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tabla_debe1 = new javax.swing.JTable();
+        btn_insertarHaber = new javax.swing.JButton();
+        btn_eliminar_detalleHaber = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -72,7 +81,7 @@ public class GUILibroDiario extends javax.swing.JDialog {
         jScrollPane3.setViewportView(jTable2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("                                                                                                  CATEGORIAS");
+        setTitle("Asientos");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
@@ -161,7 +170,7 @@ public class GUILibroDiario extends javax.swing.JDialog {
         jToolBar1.setRollover(true);
 
         btn_nuevo.setMnemonic('N');
-        btn_nuevo.setText("Nuevo");
+        btn_nuevo.setText("Nuevo Asiento");
         btn_nuevo.setBorderPainted(false);
         btn_nuevo.setFocusable(false);
         btn_nuevo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -174,7 +183,7 @@ public class GUILibroDiario extends javax.swing.JDialog {
         jToolBar1.add(btn_nuevo);
 
         btn_editar.setMnemonic('E');
-        btn_editar.setText("Editar");
+        btn_editar.setText("Editar Asiento");
         btn_editar.setFocusable(false);
         btn_editar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_editar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -266,6 +275,85 @@ public class GUILibroDiario extends javax.swing.JDialog {
 
         jTabbedPane1.addTab("Debe", jPanel2);
 
+        cbo_cuenta2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        txt_valorHaber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_valorHaberActionPerformed(evt);
+            }
+        });
+
+        tabla_debe1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(tabla_debe1);
+
+        btn_insertarHaber.setText("Insertar");
+
+        btn_eliminar_detalleHaber.setText("Eliminar");
+
+        jLabel3.setText("Valor Haber");
+
+        jLabel6.setText("Cuenta");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 689, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(45, 45, 45)
+                                .addComponent(cbo_cuenta2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(53, 53, 53)
+                                .addComponent(jLabel6)))
+                        .addGap(16, 16, 16)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(txt_valorHaber, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_insertarHaber)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_eliminar_detalleHaber))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(jLabel3)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbo_cuenta2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_valorHaber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_insertarHaber)
+                    .addComponent(btn_eliminar_detalleHaber))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Haber", jPanel3);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -274,13 +362,10 @@ public class GUILibroDiario extends javax.swing.JDialog {
                 .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(27, 27, 27))
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -315,6 +400,10 @@ public class GUILibroDiario extends javax.swing.JDialog {
         CalendarioController calenCtrl = new CalendarioController(guicalen, txt_fecha);
         calenCtrl.mostrarVentana();
     }//GEN-LAST:event_btn_calendarioActionPerformed
+
+    private void txt_valorHaberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_valorHaberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_valorHaberActionPerformed
 
     /**
      * @param args the command line arguments
@@ -379,26 +468,35 @@ public class GUILibroDiario extends javax.swing.JDialog {
     public javax.swing.JButton btn_editar;
     public javax.swing.JButton btn_eliminar;
     public javax.swing.JButton btn_eliminar_detalle;
+    public javax.swing.JButton btn_eliminar_detalleHaber;
     public javax.swing.JButton btn_guardar;
     public javax.swing.JButton btn_insertar;
+    public javax.swing.JButton btn_insertarHaber;
     public javax.swing.JButton btn_nuevo;
     public javax.swing.JComboBox<String> cbo_cuenta1;
+    public javax.swing.JComboBox<String> cbo_cuenta2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable2;
     private javax.swing.JToolBar jToolBar1;
     public javax.swing.JTable tabla_debe;
+    public javax.swing.JTable tabla_debe1;
     public javax.swing.JTextArea txt_descripcion;
     public javax.swing.JTextField txt_fecha;
     public javax.swing.JTextField txt_idasiento;
+    public javax.swing.JTextField txt_valorHaber;
     public javax.swing.JTextField txt_valordebe;
     // End of variables declaration//GEN-END:variables
 }

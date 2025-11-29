@@ -51,7 +51,7 @@ public class DetalleAsientoCrudImpl implements Crud <DetalleAsiento>{
     @Override
     public void actualizar(DetalleAsiento obj) {
         try {
-            String sql="update detalle_asientos set fk_cuentas=?,debe=?,haber=? where id_detalle_asientos=?";
+            String sql="update detalle_asientos set fk_cuentas=?,debe=?,haber=? where a=?";
             sentencia = conec.prepareStatement(sql);
             sentencia.setInt(1, obj.getCuenta().getId());
             sentencia.setDouble(2, obj.getDebe());

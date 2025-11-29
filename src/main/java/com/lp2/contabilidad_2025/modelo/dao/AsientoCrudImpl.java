@@ -109,31 +109,103 @@ public class AsientoCrudImpl implements Crud<Asiento>{
         return asiento;
     }
     
-    @Override
+   @Override
     public List<Asiento> listar(String textoBuscado) {
-        System.out.println("texto buscado "+ textoBuscado);
+        System.out.println("texto buscado: " + textoBuscado);
         ArrayList<Asiento> lista = new ArrayList<>();
+
         try {
-            String sql="SELECT * FROM asientos WHERE fecha ilike ?";
+            // SQL que busca por ID, fecha o descripción
+            String sql = "SELECT * FROM asientos WHERE 1=1 ";
+
+            // Si hay texto de búsqueda, agregar condiciones
+            if (textoBuscado != null && !textoBuscado.trim().isEmpty()) {
+                sql += "AND (CAST(id_asientos AS TEXT) ILIKE ? " +
+                       "OR CAST(fecha AS TEXT) ILIKE ? " +
+                       "OR descripcion ILIKE ?) ";
+            }
+
+            sql += "ORDER BY fecha DESC, id_asientos DESC";
+
             sentencia = conec.prepareStatement(sql);
-            sentencia.setString(1, "%" +textoBuscado+"%");
+
+            // Asignar parámetros si hay texto de búsqueda
+            if (textoBuscado != null && !textoBuscado.trim().isEmpty()) {
+                String parametroBusqueda = "%" + textoBuscado + "%";
+                sentencia.setString(1, parametroBusqueda); // Búsqueda por ID
+                sentencia.setString(2, parametroBusqueda); // Búsqueda por fecha
+                sentencia.setString(3, parametroBusqueda); // Búsqueda por descripción
+            }
+
             ResultSet rs = sentencia.executeQuery();
-            
-            //recorrer una lista
-            while(rs.next()){
-                TipoCuenta tipo = new TipoCuenta();
+
+            // Recorrer los resultados
+            while(rs.next()) {
                 Asiento asiento = new Asiento();
                 asiento.setId(rs.getInt("id_asientos"));
                 asiento.setFecha(rs.getDate("fecha"));
                 asiento.setDescripcion(rs.getString("descripcion"));
-                
+
                 lista.add(asiento);
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(AsientoCrudImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         return lista;
     }
-    
+
+    // Método alternativo con criterio específico
+    public List<Asiento> listarPorCriterio(String criterio, String textoBuscado) {
+        System.out.println("Criterio: " + criterio + ", texto buscado: " + textoBuscado);
+        ArrayList<Asiento> lista = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM asientos WHERE ";
+
+            // Seleccionar el criterio de búsqueda
+            switch(criterio.toLowerCase()) {
+                case "id":
+                    sql += "id_asientos = ? ";
+                    break;
+                case "fecha":
+                    sql += "CAST(fecha AS TEXT) ILIKE ? ";
+                    break;
+                case "descripcion":
+                    sql += "descripcion ILIKE ? ";
+                    break;
+                default:
+                    sql += "1=1 "; // Si no hay criterio válido, traer todos
+            }
+
+            sql += "ORDER BY fecha DESC, id_asientos DESC";
+
+            sentencia = conec.prepareStatement(sql);
+
+            // Asignar parámetro según el criterio
+            if (criterio.equalsIgnoreCase("id")) {
+                sentencia.setInt(1, Integer.parseInt(textoBuscado));
+            } else if (criterio.equalsIgnoreCase("fecha") || criterio.equalsIgnoreCase("descripcion")) {
+                sentencia.setString(1, "%" + textoBuscado + "%");
+            }
+
+            ResultSet rs = sentencia.executeQuery();
+
+            // Recorrer los resultados
+            while(rs.next()) {
+                Asiento asiento = new Asiento();
+                asiento.setId(rs.getInt("id_asientos"));
+                asiento.setFecha(rs.getDate("fecha"));
+                asiento.setDescripcion(rs.getString("descripcion"));
+
+                lista.add(asiento);
+            }
+
+        } catch (SQLException | NumberFormatException ex) {
+            Logger.getLogger(AsientoCrudImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return lista;
+    }
 }

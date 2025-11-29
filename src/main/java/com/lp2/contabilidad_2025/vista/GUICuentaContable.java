@@ -46,7 +46,7 @@ public class GUICuentaContable extends javax.swing.JDialog {
         btn_eliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("                                                                                                  CATEGORIAS");
+        setTitle("CUENTAS");
 
         tabla.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tabla.setModel(new javax.swing.table.DefaultTableModel(
